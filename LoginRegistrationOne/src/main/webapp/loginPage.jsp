@@ -11,43 +11,25 @@
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
 
-<!-- <link rel="stylesheet" href="CSS/reg.css"> -->
+<link rel="stylesheet" href="CSS/loginPageCSS.css" type="text/css">
+	
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-<style type="text/css">
-.container {
-	margin-top: 5%;
-	margin-left: 30%;
-}
-
-.row {
-	padding: 10px;
-}
-
-.transbox {
-	margin: 30px;
-	background-color: transparent;
-	opacity: 0.6;
-	filter: alpha(opacity = 60);
-}
-</style>
 
 </head>
 <body>
-	<div
-		style="background-image: url('CSS/Open-Bookpic.jpg'); background-repeat: no-repeat; background-size: 70% 100%; min-height: 1000%;"
-		class="container">
-		
+	<div class="container">
 		<form action="loginImpl" method="post">
 			<div class="form-row">
 				<div class="col-md-4">
 					<div class="transbox">
 						<label for="inputFirstName"><b>First Name</b></label> <input
 							type="text" class="form-control" id="First Name"
-							placeholder="First Name" name="firstName" required="required" pattern=".{2,}">
+							placeholder="First Name" name="firstName" required="required"
+							pattern=".{2,}">
 					</div>
 				</div>
 
@@ -55,8 +37,9 @@
 					<div class="transbox">
 						<label for="inputLastName"><b>Last Name</b></label> <input
 							type="text" class="form-control" id="Last Name"
-							placeholder="Last Name" name="lastName" required="required" pattern=".{2,}">
-							
+							placeholder="Last Name" name="lastName" required="required"
+							pattern=".{2,}">
+
 					</div>
 				</div>
 			</div>
@@ -66,7 +49,8 @@
 					<div class="transbox">
 						<label for="inputUserName"><b>User Name</b></label> <input
 							type="text" class="form-control" id="User Name"
-							placeholder="User Name" name="userName" required="required" pattern=".{2,}">
+							placeholder="User Name" name="userName" required="required"
+							pattern=".{2,}">
 					</div>
 				</div>
 
@@ -74,7 +58,8 @@
 					<div class="transbox">
 						<label for="inputPassword"><b>Password</b></label> <input
 							type="password" class="form-control" id="Password"
-							placeholder="password" name="password" required="required" pattern=".{2,}">
+							placeholder="password" name="password" required="required"
+							pattern=".{2,}">
 					</div>
 				</div>
 			</div>
@@ -84,7 +69,8 @@
 					<div class="transbox">
 						<label for="inputPhoneNumber"><b>Phone Number</b></label> <input
 							type="text" class="form-control" id="Phone Number"
-							placeholder="Phone Number" name="phoneNumber" pattern="[789][0-9]{9}">
+							placeholder="Phone Number" name="phoneNumber"
+							pattern="[7896][0-9]{9}">
 					</div>
 				</div>
 
@@ -92,7 +78,8 @@
 					<div class="transbox">
 						<label for="inputEmailId"><b>Email Id</b></label> <input
 							type="text" class="form-control" id="Email ID"
-							placeholder="Email Id" name="emailId" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+							placeholder="Email Id" name="emailId" required="required"
+							pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
 					</div>
 				</div>
 			</div>

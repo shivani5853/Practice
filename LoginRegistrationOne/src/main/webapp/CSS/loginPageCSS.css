@@ -1,3 +1,4 @@
+
 .row {
 	padding: 10px;
 }
@@ -9,7 +10,7 @@
 	filter: alpha(opacity = 60);
 }
 .container {
-	background-image:url("getty_452592363_2000127620009280348_98358.jpg");
+	background-image: url('Open-Bookpic.jpg');
 	background-repeat: no-repeat;
 	background-size: 70% 100%;
 	min-height: 1000%;

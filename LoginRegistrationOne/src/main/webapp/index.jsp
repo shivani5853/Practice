@@ -9,37 +9,18 @@
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
 
-<!-- <link rel="stylesheet" href="CSS/reg.css"> -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <link rel="stylesheet" href="CSS/reg.css" type="text/css">
+ 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
-<style type="text/css">
-.container {
-	margin-top: 5%;
-	margin-left: 30%;
-}
-
-.row {
-	padding: 10px;
-}
-
-.transbox {
-	margin: 30px;
-	background-color: transparent;
-	opacity: 0.6;
-	filter: alpha(opacity = 60);
-}
-</style>
 
 </head>
 <body>
 	<div
-		style="background-image: url('CSS/getty_452592363_2000127620009280348_98358.jpg'); background-repeat: no-repeat; background-size: 50% 100%; min-height: 1000%;"
+		
 		class="container">
 		<!-- <img src="CSS/10-SEO-books-you-should-read-1.jpg" class="img-circle" alt="Cinque Terre" width="1400" height="700">d -->
-
 
 		
 		<form>
