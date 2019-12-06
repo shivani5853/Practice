@@ -9,27 +9,27 @@
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
 
- <link rel="stylesheet" href="CSS/reg.css" type="text/css">
- 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="CSS/reg.css" type="text/css">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 </head>
 <body>
-	<div
-		
-		class="container">
+	<div class="container">
 		<!-- <img src="CSS/10-SEO-books-you-should-read-1.jpg" class="img-circle" alt="Cinque Terre" width="1400" height="700">d -->
 
-		
-		<form>
+
+		<form action="login" method="post">
 			<div class="row">
 				<div class="col-md-6">
 					<div class="transbox">
-						<label for="inputEmail4"><b>User Name</b></label> <input
-							type="text" class="form-control" placeholder="User Name" required="required">
-							
+						<label for="inputUserName"><b>User Name</b></label> <input
+							type="text" class="form-control" placeholder="User Name"
+							required="required" name="userName">
+
 					</div>
 				</div>
 			</div>
@@ -37,7 +37,8 @@
 				<div class="col-md-6">
 					<div class="transbox">
 						<label for="inputEmail4"><b>Password</b></label> <input
-							type="text" class="form-control" placeholder="Password" required="required">
+							type="Password" class="form-control" placeholder="Password"
+							required="required" name="Password">
 					</div>
 				</div>
 			</div>
@@ -46,9 +47,9 @@
 				<label><input type="checkbox">Remember me</label>
 			</div>
 
-			<button type="button" class="btn btn-primary">Sing in</button>
-			<a href="loginPage.jsp" class="btn btn-success">Sing up</a>
-			
+			<button type="submit" class="btn btn-primary">Sign in</button>
+			<a href="loginPage.jsp" class="btn btn-success">Sign up</a>
+
 		</form>
 	</div>
 </body>

@@ -7,7 +7,16 @@ public class PersonDetails {
 	private String userName;
 	private String password;
 	private String phoneNumber;
+	private String conformPassword;
 	
+	public String getConformPassword() {
+		return conformPassword;
+	}
+
+	public void setConformPassword(String conformPassword) {
+		this.conformPassword = conformPassword;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -59,6 +68,9 @@ public class PersonDetails {
 	@Override
 	public String toString() {
 		return "PersonDetails [firstName=" + firstName + ", lastname=" + lastname + ", emailId=" + emailId
-				+ ", phoneNumber=" + phoneNumber + ", userName=" + userName + ", password=" + password + "]";
+				+ ", userName=" + userName + ", password=" + password + ", phoneNumber=" + phoneNumber
+				+ ", conformPassword=" + conformPassword + "]";
 	}
+
+	
 }

@@ -12,12 +12,20 @@
 	crossorigin="anonymous">
 
 <link rel="stylesheet" href="CSS/loginPageCSS.css" type="text/css">
-	
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
+<script type="text/javascript">
+	function confirmPass() {
+		var pass = document.getElementById("Password").value
+		var confPass = document.getElementById("ConfirmPassword").value
+		if (pass != confPass) {
+			alert('Wrong confirm password !');
+		}
+	}
+</script>
 
 </head>
 <body>
@@ -58,13 +66,22 @@
 					<div class="transbox">
 						<label for="inputPassword"><b>Password</b></label> <input
 							type="password" class="form-control" id="Password"
-							placeholder="password" name="password" required="required"
-							pattern=".{2,}">
+							placeholder="password" name="password" onchange='check_pass()'
+							required="required" pattern=".{2,}">
 					</div>
 				</div>
 			</div>
 
 			<div class="form-row">
+				<div class="col-md-4">
+					<div class="transbox">
+						<label for="inputPassword"><b>Confirm Password</b></label> <input
+							type="password" class="form-control" id="ConfirmPassword"
+							placeholder="Confirmpassword" name="ConfirmPssword"
+							required="required" pattern=".{2,}" onblur="confirmPass()">
+					</div>
+				</div>
+
 				<div class="col-md-4">
 					<div class="transbox">
 						<label for="inputPhoneNumber"><b>Phone Number</b></label> <input
@@ -73,20 +90,21 @@
 							pattern="[7896][0-9]{9}">
 					</div>
 				</div>
-
-				<div class="col-md-4">
-					<div class="transbox">
-						<label for="inputEmailId"><b>Email Id</b></label> <input
-							type="text" class="form-control" id="Email ID"
-							placeholder="Email Id" name="emailId" required="required"
-							pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
-					</div>
+			</div>
+			<div class="col-md-6">
+				<div class="transbox">
+					<label for="inputEmailId"><b>Email Id</b></label> <input
+						type="text" class="form-control" id="Email ID"
+						placeholder="Email Id" name="emailId" required="required"
+						pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
 				</div>
 			</div>
-			<div class="form-group">
-				<div class="form-check">
-					<input class="form-check-input" type="checkbox" id="gridCheck">
-					<label class="form-check-label" for="gridCheck">Check me</label>
+			<div class="col-md-4">
+				<div class="form-group">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" id="gridCheck">
+						<label class="form-check-label" for="gridCheck">Check me</label>
+					</div>
 				</div>
 			</div>
 

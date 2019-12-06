@@ -23,21 +23,24 @@
 </head>
 
 <body>
-	<button type="button" class="btn btn-primary">Add</button>
+	<a href="loginPage.jsp" class="btn btn-primary">Add</a>
 	<button type="button" class="btn btn-primary">Update</button>
-	<button type="button" class="btn btn-primary">Delete</button>
+	<button type="button" class="btn btn-primary">Edit</button>
+	<a href="Delete.jsp" class="btn btn-primary">Delete</a>
 	<a href="index.jsp" class="btn btn-primary">Logout</a>
 
-	<form method="post">
+	<form action="Home" method="post">
 
-		<table class="table">
-			<tr>
-				<td>FirstName</td>
-				<td>LastName</td>
-				<td>Emailid</td>
-				<td>UserId</td>
-				<td>PhoneNo</td>
-			</tr>
+		<table class="table table-striped table-dark">
+			<thead class="thead-dark">
+				<tr>
+					<td>FirstName</td>
+					<td>LastName</td>
+					<td>Emailid</td>
+					<td>UserId</td>
+					<td>PhoneNo</td>
+				</tr>
+			</thead>
 			<%
 				Connection conn = null;
 				Statement stmt = null;
@@ -62,6 +65,7 @@
 			<%
 				}
 			%>
+
 		</table>
 		<%
 			rs.close();
