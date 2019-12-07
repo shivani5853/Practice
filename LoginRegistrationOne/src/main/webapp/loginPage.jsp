@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,7 +78,7 @@
 					<div class="transbox">
 						<label for="inputPassword"><b>Confirm Password</b></label> <input
 							type="password" class="form-control" id="ConfirmPassword"
-							placeholder="Confirmpassword" name="ConfirmPssword"
+							placeholder="Confirmpassword" name="ConfirmPassword"
 							required="required" pattern=".{2,}" onblur="confirmPass()">
 					</div>
 				</div>

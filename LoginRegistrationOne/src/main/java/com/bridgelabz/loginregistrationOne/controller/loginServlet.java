@@ -15,14 +15,10 @@ import com.bridgelabz.loginregistrationOne.model.Login;
 public class loginServlet extends HttpServlet {
 
 	public Login login = new Login();
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("get");
-	}
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		System.out.println("1");
 		String userName = req.getParameter("userName");
 		String password = req.getParameter("Password");
 

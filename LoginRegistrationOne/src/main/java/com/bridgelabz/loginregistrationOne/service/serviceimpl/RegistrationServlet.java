@@ -15,18 +15,21 @@ import com.bridgelabz.loginregistrationOne.repository.InsertQuery;
 
 @WebServlet("/loginImpl")
 public class RegistrationServlet extends HttpServlet {
-	public  List<PersonDetails> list=new ArrayList<PersonDetails>();
-	PersonDetails person=new PersonDetails();
+	public List<PersonDetails> list = new ArrayList<PersonDetails>();
+	PersonDetails person = new PersonDetails();
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
-		String firstName=req.getParameter("firstName");
-		String lastName=req.getParameter("lastName");
-		String userName=req.getParameter("userName");
-		String password=req.getParameter("password");
-		String emailId=req.getParameter("emailId");
-		String phoneNumber=req.getParameter("phoneNumber");
-		System.out.println(firstName+" "+lastName+" "+userName+" "+password+" "+emailId+" "+phoneNumber);
+
+		String firstName = req.getParameter("firstName");
+		String lastName = req.getParameter("lastName");
+		String userName = req.getParameter("userName");
+		String password = req.getParameter("password");
+		String emailId = req.getParameter("emailId");
+		String phoneNumber = req.getParameter("phoneNumber");
+		String confirmPassword = req.getParameter("ConfirmPassword");
+		System.out.println(firstName + " " + lastName + " " + userName + " " + password + " " + emailId + " "
+				+ phoneNumber + " " + confirmPassword);
 
 		person.setFirstName(firstName);
 		person.setLastname(lastName);
@@ -34,19 +37,17 @@ public class RegistrationServlet extends HttpServlet {
 		person.setPassword(password);
 		person.setEmailId(emailId);
 		person.setPhoneNumber(phoneNumber);
-		
-		System.out.println("Person "+person);
-		InsertQuery personInfo=new InsertQuery();
-		
-		String userRegistered=personInfo.registeredUser(person);
-		
-		if(userRegistered.equalsIgnoreCase("SUCCESS"))
-		{
+		person.setConformPassword(confirmPassword);
+
+		System.out.println("Person " + person);
+		InsertQuery personInfo = new InsertQuery();
+
+		String userRegistered = personInfo.registeredUser(person);
+
+		if (userRegistered.equalsIgnoreCase("SUCCESS")) {
 			req.getRequestDispatcher("/Home.jsp").forward(req, resp);
-		}
-		else
-		{
-			req.setAttribute("errMessage",userRegistered);
+		} else {
+			req.setAttribute("errMessage", userRegistered);
 			req.getRequestDispatcher("/loginPage.jsp").forward(req, resp);
 		}
 	}

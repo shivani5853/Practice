@@ -12,14 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 import com.bridgelabz.loginregistrationOne.model.DeleteDetails;
 import com.bridgelabz.loginregistrationOne.repository.DeleteDataJdbc;
 
-@WebServlet("/Delete")
+@WebServlet("/delete")
 public class DeleteData extends HttpServlet {
 
 	DeleteDetails delete = new DeleteDetails();
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String UserId = req.getParameter("userId");
+		String UserId = req.getParameter("uid");
 		System.out.println(UserId);
 		delete.setUserid(UserId);
 

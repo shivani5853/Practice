@@ -14,18 +14,18 @@ public class InsertQuery {
 	String user = "root";
 	String password = "root";
 
-	public String registeredUser(PersonDetails person)
-		{
-		
-		String FirstName=person.getFirstName();
-		String LastName=person.getLastname();
-		String Emailid=person.getEmailId();
-		String UserId=person.getUserName();
-		String Password=person.getPassword();
-		String PhoneNo=person.getPhoneNumber();
-		
-		String query = "insert into login.Registation value(?,?,?,?,?,?)";
-		
+	public String registeredUser(PersonDetails person) {
+
+		String FirstName = person.getFirstName();
+		String LastName = person.getLastname();
+		String Emailid = person.getEmailId();
+		String UserId = person.getUserName();
+		String Password = person.getPassword();
+		String PhoneNo = person.getPhoneNumber();
+		String ConfirmPassword = person.getConformPassword();
+
+		String query = "insert into login.Registation value(?,?,?,?,?,?,?)";
+
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			System.out.println("Driver Class loaded & Registered");
@@ -33,17 +33,17 @@ public class InsertQuery {
 			System.out.println("Connection Established with Databasde");
 			pstmt = con.prepareStatement(query);
 			System.out.println("Plateform Created");
-			
-			pstmt.setString(1,FirstName);
-			pstmt.setString(2,LastName);
-			pstmt.setString(3,Emailid);
-			pstmt.setString(4,UserId);
-			pstmt.setString(5,Password);
-			pstmt.setString(6,PhoneNo);
-			
-			int i=pstmt.executeUpdate();
-			if(i!=0)
-			{
+
+			pstmt.setString(1, FirstName);
+			pstmt.setString(2, LastName);
+			pstmt.setString(3, Emailid);
+			pstmt.setString(4, UserId);
+			pstmt.setString(5, Password);
+			pstmt.setString(6, PhoneNo);
+			pstmt.setString(7, ConfirmPassword);
+
+			int i = pstmt.executeUpdate();
+			if (i != 0) {
 				return "SUCCESS";
 			}
 		} catch (Exception e) {
@@ -51,6 +51,13 @@ public class InsertQuery {
 		}
 
 		finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 			if (con != null) {
 				try {
 					con.close();
@@ -60,6 +67,6 @@ public class InsertQuery {
 			}
 		}
 
-	return "Sorry Something Went Wrong";
-		}
+		return "Sorry Something Went Wrong";
+	}
 }

@@ -24,13 +24,10 @@
 
 <body>
 	<a href="loginPage.jsp" class="btn btn-primary">Add</a>
-	<button type="button" class="btn btn-primary">Update</button>
-	<button type="button" class="btn btn-primary">Edit</button>
-	<a href="Delete.jsp" class="btn btn-primary">Delete</a>
+
 	<a href="index.jsp" class="btn btn-primary">Logout</a>
 
-	<form action="Home" method="post">
-
+	
 		<table class="table table-striped table-dark">
 			<thead class="thead-dark">
 				<tr>
@@ -39,6 +36,8 @@
 					<td>Emailid</td>
 					<td>UserId</td>
 					<td>PhoneNo</td>
+					<td>Delete</td>
+					<td>Edit</td>
 				</tr>
 			</thead>
 			<%
@@ -61,6 +60,19 @@
 				<td><%=rs.getString("Emailid")%></td>
 				<td><%=rs.getString("UserId")%></td>
 				<td><%=rs.getString("PhoneNo")%></td>
+				<td>
+				<form action="delete" method="post">
+					<input type="hidden" name="uid" value="<%=rs.getString("UserId")%>">
+					<button type="submit" class="btn btn-primary">Delete</button>
+				</form>
+				
+				</td>
+				<td>
+					<form action="edit" method="post">
+					<input type="hidden" name="uid" value="<%=rs.getString("UserId")%>">
+					<button type="submit" class="btn btn-primary">Edit</button>
+				</form>
+				</td>
 			</tr>
 			<%
 				}
@@ -76,6 +88,7 @@
 			}
 		%>
 
-	</form>
+
+
 </body>
 </html>
