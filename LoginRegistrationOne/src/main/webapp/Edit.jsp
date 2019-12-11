@@ -45,7 +45,7 @@
 <body>
 
 	<div class="container">
-		<form action="loginImpl" method="post">
+		<form action="update" method="post">
 		<%-- <%
 				Connection conn = null;
 				Statement stmt = null;
@@ -66,13 +66,13 @@
 			<%
 				PersonDetails personDetails = (PersonDetails)request.getAttribute("userdetails");
 			%>
-			<input type="hidden" name="UserId">
+		<!-- 	<input type="hidden" name="UserId"> -->
 			<div class="form-row">
 				<div class="col-md-4">
 					<div class="transbox">
 						<label for="inputFirstName"><b>First Name</b></label> <input
 							type="text" class="form-control" id="First Name"
-							placeholder="First Name" name="firstName" required="required"
+							placeholder="First Name" name="FirstName" required="required"
 							pattern=".{2,}" value="<%=personDetails.getFirstName()%>">
 					</div>
 				</div>
@@ -81,7 +81,7 @@
 					<div class="transbox">
 						<label for="inputLastName"><b>Last Name</b></label> <input
 							type="text" class="form-control" id="Last Name"
-							placeholder="Last Name" name="lastName" required="required"
+							placeholder="Last Name" name="LastName" required="required"
 							pattern=".{2,}"value="<%=personDetails.getLastname()%>">
 
 					</div>
@@ -93,7 +93,7 @@
 					<div class="transbox">
 						<label for="inputUserName"><b>User Name</b></label> <input
 							type="text" class="form-control" id="User Name"
-							placeholder="User Name" name="userName" required="required"
+							placeholder="User Name" name="UserId" required="required"
 							pattern=".{2,}" value="<%=personDetails.getUserName()%>" readonly="readonly">
 					</div>
 				</div>
@@ -102,7 +102,7 @@
 					<div class="transbox">
 						<label for="inputPhoneNumber"><b>Phone Number</b></label> <input
 							type="text" class="form-control"  id="Phone Number"
-							placeholder="Phone Number" name="phoneNumber"
+							placeholder="Phone Number" name="PhoneNo"
 							pattern="[7896][0-9]{9}" value="<%=personDetails.getPhoneNumber()%>">
 					</div>
 				</div>
@@ -111,7 +111,7 @@
 				<div class="transbox">
 					<label for="inputEmailId"><b>Email Id</b></label> <input
 						type="text" class="form-control" id="Email ID" 
-						placeholder="Email Id" name="emailId" required="required"
+						placeholder="Email Id" name="Emailid" required="required"
 						pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" value="<%=personDetails.getEmailId()%>">
 				</div>
 			<%-- 	<%

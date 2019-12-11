@@ -12,18 +12,21 @@ import javax.servlet.http.HttpServletResponse;
 import com.bridgelabz.loginregistrationOne.model.PersonDetails;
 import com.bridgelabz.loginregistrationOne.repository.UserDetailsRepository;
 
-@WebServlet("/loginImpl")
+@WebServlet("/update")
 public class UpdateServlet extends HttpServlet{
 	
 	PersonDetails person=new PersonDetails();
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		String firstName=req.getParameter("FirstName");
 		String lastName=req.getParameter("LastName");
 		String phoneNo=req.getParameter("PhoneNo");
 		String emailid=req.getParameter("Emailid");
 		String userId=req.getParameter("UserId");
+		
+		System.out.println("user Id "+userId);
 		
 		person.setFirstName(firstName);
 		person.setLastname(lastName);
@@ -31,7 +34,7 @@ public class UpdateServlet extends HttpServlet{
 		person.setPhoneNumber(phoneNo);
 		person.setUserName(userId);
 		
-		System.out.println(person);
+		System.out.println("person::"+person);
 		
 		try {
 			System.out.println(person);

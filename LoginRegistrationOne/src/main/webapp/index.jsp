@@ -42,6 +42,23 @@
 					</div>
 				</div>
 			</div>
+			
+			<%-- <%
+				String msg = (String)request.getAttribute("m");
+								if(msg!=null){
+									//<div style="color : red; text-align: center;">Invalid Username/Password</div>--> -->
+								//out.print(msg);
+							}
+								
+							%> --%>
+			<!-- <div id="message"> -->
+			<%
+				String msg = (String)request.getAttribute("m");
+								if(msg!=null){%>
+			<P style="color : red;"><%=msg %></P>
+			<%} %>
+			<!-- </div> -->
+			
 
 			<div class="checkbox">
 				<label><input type="checkbox">Remember me</label>
