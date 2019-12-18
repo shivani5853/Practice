@@ -1,0 +1,165 @@
+Servlet:
+---------
+1.What is the web application and what is the difference between Get and Post request?
+2.What information is received by the web server if we request for a Servlet?
+3.How to run servlet in Eclipse, MyEclipse and Netbeans IDE?
+4.What are the ways for servlet collaboration and what is the difference between RequestDispatcher and sendRedirect() method?
+5.What is the difference between ServletConfig and ServletContext interface?
+6.How many ways can we maintain the state of a user? Which approach is mostly used in web development?
+7.How to count the total number of visitors and whole response time for a request using Filter?
+8.How to run servlet with annotation?
+9.How to create registration form using Servlet and Oracle database?
+10.How can we upload and download the file from the server?
+
+
+Disadvantages of CGI:
+---------------------------
+There are many problems in CGI technology:
+
+1.If the number of clients increases, it takes more time for sending the response.
+2.For each request, it starts a process, and the web server is limited to start processes.
+3.It uses platform dependent language e.g. C, C++, perl.
+
+
+Advantages of Servlet:
+----------------------
+
+There are many advantages of Servlet over CGI. The web container creates threads for handling the multiple requests to the Servlet. Threads have many benefits over the Processes such as they share a common memory area, lightweight, cost of communication between the threads are low. The advantages of Servlet are as follows:
+
+Better performance: because it creates a thread for each request, not process.
+Portability: because it uses Java language.
+Robust: JVM manages Servlets, so we don't need to worry about the memory leak, garbage collection, etc.
+Secure: because it uses java language.
+
+Diffrence Between Static WebSite And Dynamic Website:
+----------------------------------------------------
+
+Static Website							Dynamic Website
+Prebuilt content is same every time the page is loaded.		Content is generated quickly and changes regularly.
+
+It uses the HTML code for developing a website.			It uses the server side languages such as PHP,SERVLET, JSP, and ASP.NET etc. for developing a website.
+
+It sends exactly the same response for every request.		It may generate different HTML for each of the request.
+
+The content is only changed when someone publishes and 
+updates the file (sends it to the web server).			The page contains "server-side" code which allows the server to generate the unique content when the page is loaded.
+
+Flexibility is the main advantage of static website.		Content Management System (CMS) is the main advantage of dynamic website.
+
+
+Directory Structure:
+--------------------
+aap1[*]
+|----------WEB-INF[*]
+		|-----------Web.xml
+		|-----------classes[*]
+				|-------WelcomServlet.java
+				|-------Welcomservlet.class
+
+
+Servlet Container:
+===================
+
+Servlet Filter:
+===============
+A servlet filter implements the javax.servlet.Filter interface. The main method of this interface, doFilter(), takes a javax.servlet.FilterChain instance, created by the servlet container to represent the entire chain of filters, as input. The initialization method of the Filter interface, init(), takes a filter configuration object, which is an instance of javax.servlet.FilterConfig, as input. This section briefly describes the methods specified in these interfaces.
+
+Method of the FilterChain Interface:
+------------------------------------
+The FilterChain interface specifies one method:
+
+void doFilter(ServletRequest request, ServletResponse response):
+________________________________________________________________
+
+
+
+Methods of the FilterConfig Interface:
+--------------------------------------
+1.java.util.Enumeration getInitParameterNames():
+_______________________________________________
+
+we can set initialization parameters for a filter through <init-param> elements under the <filter> element in the web.xml file. (See "Configure the Filter".) Then, in your filter, you can use the getInitParameterNames() method of the FilterConfig object, which is passed in through the init() method, to retrieve an Enumeration object of Java strings containing the names of the initialization parameters. (The Enumeration object is empty if there are no initialization parameters for the filter.)
+
+2.String getInitParameter(String paramname):
+____________________________________________
+
+After retrieving initialization parameter names, use getInitParameter() to retrieve the value of a specified parameter.
+
+3.ServletContext getServletContext():
+_______________________________________
+
+we can use this method to retrieve the servlet context associated with the requested servlet (which the filter is filtering).
+
+4.String getFilterName():
+__________________________
+
+You can use this method to retrieve the name of the filter, according to the <filter-name> element in the web.xml file.
+
+
+Servlet Listner :
+=================
+ServletRequestAttributeListener Interface (since 2.4):
+------------------------------------------------------
+present in javax.servlet Interface.And SuperMost Interface is java.util.EventListener.
+
+A ServletRequestAttributeListener can be implemented by the developer interested in being notified of request attribute changes. Notifications will be generated while the request is within the scope of the web application in which the listener is registered. A request is defined as coming into scope when it is about to enter the first servlet or filter in each web application, as going out of scope when it exits the last servlet or the first filter in the chain. 
+
+1.attributeAdded():
+------------------
+public void attributeAdded(ServletRequestAttributeEvent srae):
+---------------------------------------------------------------
+Notification that a new attribute was added to the servlet request. Called after the attribute is added.
+
+2.attributeRemoved():
+---------------------
+public void attributeRemoved(ServletRequestAttributeEvent srae):
+-----------------------------------------------------------------
+Notification that an existing attribute has been removed from the servlet request. Called after the attribute is removed.
+
+3.attributeReplaced():
+-----------------------
+public void attributeReplaced(ServletRequestAttributeEvent srae):
+------------------------------------------------------------------
+Notification that an attribute was replaced on the servlet request. Called after the attribute is replaced.
+
+
+
+
+
+
+Spring:
+=======
+
+Bean Factory:
+=============
+The BeanFactory is the actual container which instantiates, configures, and manages a number of beans. These beans typically collaborate with one another, and thus have dependencies between themselves. These dependencies are reflected in the configuration data used by the BeanFactory (although some dependencies may not be visible as configuration data, but rather be a function of programmatic interactions between beans at runtime).
+
+A BeanFactory is represented by the interface org.springframework.beans.factory.BeanFactory, for which there are multiple implementations. The most commonly used simple BeanFactory implementation is org.springframework.beans.factory.xml.XmlBeanFactory. (This should be qualified with the reminder that ApplicationContexts are a subclass of BeanFactory, and most users end up using XML variants of ApplicationContext).
+
+Resource res = new FileSystemResource("beans.xml");
+XmlBeanFactory factory = new XmlBeanFactory(res);
+or
+
+ClassPathResource res = new ClassPathResource("beans.xml");
+XmlBeanFactory factory = new XmlBeanFactory(res);
+or
+
+ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext(
+        new String[] {"applicationContext.xml", "applicationContext-part2.xml"});
+// of course, an ApplicationContext is just a BeanFactory
+BeanFactory factory = (BeanFactory) appContext;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

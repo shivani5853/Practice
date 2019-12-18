@@ -1,0 +1,654 @@
+									SQL
+
+Create a new MySQL User Account:
+
+MYSQLDUMP -U USERNAME -P DATABASE_NAME > DATA-DUMP.SQL
+CREATE DATABASE NEW_DATABASE;
+MYSQL -U USERNAME -P NEW_DATABASE < DATA-DUMP.SQL
+
+1.Enter the mysql:
+mysql -u root -p //give root password
+
+2.Create a new MySQL User Account:
+CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'user_password';//change newuser name and password-shivani,admin
+
+To create a user that can connect from any host, use the '%' wildcard as a host part:
+CREATE USER 'newuser'@'%' IDENTIFIED BY 'user_password';
+
+3.Grant multiple privileges to a user account over a specific database:
+GRANT ALL PRIVILEGES ON database_name.* TO 'database_user'@'localhost';//form this we are giving permision to all	
+
+4.Grant multiple privileges to a user account over a specific database:
+GRANT SELECT, INSERT, DELETE ON database_name.* TO database_user@'localhost';
+
+5.Display MySQL User Account Privileges:
+SHOW GRANTS FOR 'database_user'@'localhost';
+
+6.To change colum/Field name
+ALTER TABLE Customer CHANGE Address Addr char(50);
+
+7.Update at once:
+update Mentor_Tech_Stack set Status='True';
+
+7.To delete the column from the table:
+---------------------------------------
+ALTER TABLE Mentor_Tech_Stack DROP COLUMN Status;
+
+8.To change column name:
+-------------------------
+alter table table_name change column column_Name new_column_Name datatype;
+
+9.to add new Field in the table:
+---------------------------------
+ALTER TABLE vendors ADD COLUMN phone VARCHAR(15);
+
+set autoIncrement=1;
+
+To change Forengn key:
+set FOREIGN_Key_Checks=0;
+alter table Fellowship_Candidate modify Id int not null auto_increment;
+
+to check foregin key on or not:
+--------------------------------
+show variables like 'fo%';
+
+Create DataBase:
+create database database_Name;
+
+Create Table:
+1.Hired_Candidate:
+--------------------
+create table Hired_Candidate(
+Id int not null auto increment,
+First_Name varchar(30) not null,
+Middle_Name varchar(30),
+Last_Name varchar(30),
+EmailId varchar(40),
+Hired_City varchar(20),
+Degree varchar(10) not null,
+Hired_Date Date,
+Mobile_Number bigint not null,
+Permanent_Pincode int,
+Hired_Lab varchar(10),
+Attitude varchar(30),
+Communication_Remark varchar(40),
+Knowledge_Remark varchar(40),
+Aggregate_percentage double,
+Status varchar(10),
+Creator_Stamp timestamp,
+Creator_User int,
+primary key(Id),
+FOREIGN KEY(Creator_User) REFERENCES User_Details(Id)
+);
+
+Data:
+------
+insert into Hired_Candidate(Id,First_Name,Middle_Name,Last_Name,EmailId,Hired_City,Degree,Hired_Date,Mobile_Number,Permanent_Pincode,Hired_Lab,Attitude,Communication_Remark,Knowledge_Remark,Aggregate_percentage,Status,Creator_User) values(2,'Ravi',' ','kam','ravi@gmail.com','Bangalore','B.Tech','2018-02-12',8789911303,456321,'BridgeLabz','Good','Good','Good',88,'Accept',4),
+(3,'Ram','Kumar','Singh','ram@gmail.com','Bangalore','B.Tech','2018-06-8',9789911202,656321,'BridgeLabz','Good','Good','Average',95.3,'Accept',2);
+
+
+2.User_Details Table:
+----------------------
+create table User_Details(
+Id int not null auto increment,
+Email varchar(30),
+First_Name varchar(20),
+Last_Name varchar(20),
+Password varchar(20),
+Contact_Number bigint,
+Verified boolean,
+primary key(Id));
+
+Data:
+insert into User_Details(Id,Email,First_Name,Last_Name,Password,Contact_Number,Verified) 
+values(1,'shivani@gmail.com','Shivani','Kumari','admin',8789911404,1),
+(2,'venkat@gmail.com','Venkat','Reddy','venkat123',8789911444,1),
+(3,'amrutha@gmail.com','Amrutha','Sagar','amrutha123',8789911400,1),
+(4,'kalpesh@gmail.com','Kalpesh','Mali','kalpesh123',8789911409,1),
+(5,'varsha@gmail.com','Varsha','kumari','Varsha123',8789911408,1);
+
+
+
+3.Fellowship_Candidate:
+------------------------
+create table Fellowship_Candidate(
+Id int not null auto increment,
+First_Name varchar(20) not null,
+Middle_Name varchar(20),
+Last_Name varchar(20),
+EmailId varchar(30),
+Hired_City varchar(10) not null,
+Degree varchar(10) not null,
+Hired_Date date not null,
+Mobile_Number bigint,Permanent_Pincode int,Hired_Lab varchar(10),
+Attitude varchar(20),Communication_Remark varchar(30),Knowledge_Remark varchar(30),Creator_Stamp timestamp,Creator_User int,
+Birth_Date date not null,Is_Birth_Date_Verified boolean,Parents_Name varchar(20) not null,Parent_Occupation varchar(10),Parents_Mobile_Number bigint,
+Parents_Annual_Salary bigint,Local_Address varchar(30),Permanent_Address varchar(30) not null,Photo_Path varchar(30) not null,Joining_Date date,Candidate_Status varchar(10) not null,Personal_Information varchar(30),Bank_Information varchar(30),Educational_Information varchar(30) not null,Document_Status varchar(10) not null,Remark varchar(30),
+primary key(Id),
+FOREIGN KEY(Creator_User) REFERENCES User_Details(Id));
+
+insert into Fellowship_Candidate(Id,First_Name,Middle_Name,Last_Name,EmailId,Hired_City,Degree,
+Hired_Date,Mobile_Number,Permanent_Pincode,Hired_Lab,Attitude,Communication_Remark,Knowledge_Remark,
+Creator_User,Birth_Date,Is_Birth_Date_Verified,Parents_Name,Parent_Occupation,
+Parents_Mobile_Number,Parents_Annual_Salary,Local_Address,Permanent_Address,Photo_Path,Joining_Date,Candidate_Status,
+Personal_Information,Bank_Information,Educational_Information,Document_Status,Remark)
+values
+
+(1,'Shikha','','kumari','shika@gmail.com','Bangalore','B.Tech','2018-02-28',8789911404,456321,'BridgeLabz','Good','Good','Good',4,'1994-02-23',1,'SudamaSingh','Manager',9876543212,500000000,'bangalore','jamshedpur','http://abc.jpg','2018-05-12','Good','1','1','1','yes','Good'),
+
+(2,'Rahul','','kumar','Rahul@gmail.com','Bangalore','B.Tech','2018-02-28',8789911405,456320,'BridgeLabz','Good','Good','Good',3,'1994-05-23',1,'AvinabSingh','Manager',9876543215,400000000,'bangalore','Ranchi','http://mno.jpg','2018-05-12','Good','1','1','1','yes','Good');
+
+(3,'Akash','','kumar','akash@gmail.com','Bangalore','B.Tech','2018-02-20',8789911604,426321,'BridgeLabz','Good','Good','Good',2,'1994-02-20',1,'SudamaSingh','Manager',9876543213,1000000000,'bangalore','jamshedpur','http://ds.jpg','2018-05-12','Good','1','1','1','yes','Good'),
+
+(4,'Manisha','','kumari','manisha@gmail.com','Bangalore','B.Tech','2018-06-3',8789922604,428321,'BridgeLabz','Good','Good','Good',1,'1994-05-9',1,'Mahapatra','Writter',9876543637,1000000,'bangalore','Gunupur','http://ghh.jpg','2018-06-22','Good','1','1','1','yes','Good'),
+
+(5,'Harshita','','kumari','Harshita@gmail.com','Mumbai','B.Tech','2018-02-12',87899731604,446321,'BridgeLabz','Bad','Bad','Good',5,'1993-07-7',1,'T.D.Singh','Driver',9876543833,9000000,'bangalore','Orissa','http://mno.jpg','2018-5-3','Bad','1','1','1','yes','Bad'),
+
+(6,'Avinash','','kumar','avinash@gmail.com','Pune','B.Tech','2018-1-20',8789917788,426281,'BridgeLabz','Bad','Average','Average',1,'1994-02-20',1,'K.D','Manager',9876543213,1000000000,'bangalore','Bokaro','http://dgdh.jpg','2018-05-12','Bad','1','1','1','yes','Good'),
+
+(7,'Arvind','','kumar','Arvind@gmail.com','Banaglore','B.Tech','2018-11-20',9999917788,926281,'BridgeLabz','Good','Average','Average',1,'1991-11-20',1,'Raman','Manager',987623213,3000000,'bangalore','Kolkata','http://dh.jpg','2018-09-12','Good','1','1','1','yes','Good'),
+
+(8,'Raman','','kumar','raman@gmail.com','Pune','B.Tech','2018-1-20',8789917788,426281,'BridgeLabz','Bad','Average','Average',4,'1994-02-20',1,'K.D','Manager',9876543213,1000000000,'bangalore','Bokaro','http://dgdh.jpg','2018-05-12','Bad','1','1','1','yes','Good'),
+
+(9,'Sneha','','kumari','sneha@gmail.com','Pune','B.Tech','2018-1-20',8789917788,426281,'BridgeLabz','Bad','Average','Average',3,'1994-02-20',1,'K.D','Manager',9876543213,1000000000,'bangalore','Bokaro','http://dgdh.jpg','2018-05-12','Bad','1','1','1','yes','Good'),
+
+(10,'Avinav','','kumar','Avinav@gmail.com','Banglore','B.Tech','2018-1-20',8789917788,426281,'BridgeLabz','Bad','Average','Average',5,'1994-02-20',1,'K.D','Manager',9876543213,1000000000,'bangalore','Bokaro','http://dgdh.jpg','2018-05-12','Bad','1','1','1','yes','Good');
+
+
+
+4.Candidate_Bank_Details:
+-------------------------
+Create table Candidate_Bank_Details(
+Id int NOT NULL AUTO_INCREMENT,
+Candidate_Id int not null,
+Account_Number bigint not null,
+is_Account_Num_Verified boolean not null,
+Pan_Number varchar(10) UNIQUE,
+is_Pan_Number_Verified boolean not null,
+Addhaar_Number bigint UNIQUE,
+is_Addhaar_Number_Verified boolean,
+Creator_Stamp timestamp,
+Creator_User int,
+primary key(Id),
+FOREIGN KEY(Creator_User) REFERENCES User_Details(Id));
+
+
+insert into Candidate_Bank_Details(Candidate_Id,Account_Number,is_Account_Num_Verified,Pan_Number,is_Pan_Number_Verified,Addhaar_Number,
+is_Addhaar_Number_Verified,Creator_User)
+values
+
+(1,1,987665434322,1,123456789,1,55465667767,1,3),
+
+(2,98556612345,1,54346789,1,5546567767,1,4),
+(3,88766543456,1,34456789,1,546890767,1,2),
+(4,754665467784,1,3533456789,1,5435567767,1,1),
+(5,87866547855,1,187456789,1,5645667767,1,5),
+(6,76566548785,1,176456789,1,445465667767,1,2),
+(7,6789667344,1,545456789,1,5246667767,1,2),
+(8,678905433324,1,5553456789,1,134567767,1,2),
+(9,7989054324,1,15456789,1,4894667767,1,2),
+(10,89995434443,1,1789956789,1,123345456,1,3);
+
+5.Candidate_Qualification:
+--------------------------
+create table Candidate_Qualification(
+Id int not null auto_Increment,
+Candidate_Id int not null,
+Diploma varchar(10),
+Degree_Name varchar(10) not null,
+is_Degree_Name_Verified boolean not null,
+Employee_Descipline_Verified boolean,
+Passing_Year int(4) not null,
+is_Passing_Year_Verified boolean not null,
+Final_Year_Per decimal(2,2),
+is_Final_year_Per_Verified boolean,
+Training_Institute varchar(20),
+is_Training_Institute_Verified boolean,
+Training_Duration_Month int(3),
+is_Training_Duration_Month_Verified boolean,
+Other_Training varchar(10),
+is_Other_Training_Verified boolean,
+Creator_Stamp timestamp,
+Creator_User int,
+primary key(Id),
+FOREIGN KEY(Creator_User) REFERENCES User_Details(Id));
+
+Data:
+-------
+insert into Candidate_Qualification(Candidate_Id,Diploma,Degree_Name,is_Degree_Name_Verified,Employee_Descipline_Verified,Passing_Year,
+is_Passing_Year_Verified,Final_Year_Per,is_Final_year_Per_Verified,Training_Institute,is_Training_Institute_Verified,Training_Duration_Month,
+is_Training_Duration_Month_Verified,Other_Training,is_Os
+(1,'Ece','B.E',1,1,2019,1,90.00,1,'Jspider',1,6,1,'Universal',1,2),
+
+(2,'Ece','B.E',1,1,2019,1,90.00,1,'Jspider',1,6,1,'Universal',1,2),
+
+(3,'EEE','B.Tech',1,1,2018,1,90.00,1,'Jspider',1,3,1,'Universal',1,1),
+(4,'CSE','B.E',1,1,2017,1,91.00,1,'Knowlegde',1,5,1,'Universal',1,1),
+(5,'ME','B.E',1,1,2018,1,70.00,1,'Jspider',1,6,1,'Universal',1,3),
+(6,'CSE','B.E',1,1,2019,1,80.00,1,'Jspider',1,6,1,'Universal',1,4),
+(7,'Ece','B.E',1,1,2019,1,98.00,1,'Universal',1,6,1,'Universal',1,5),
+(8,'EEE','B.E',1,1,2017,1,67.00,1,'Jspider',1,9,1,'Universal',1,5),
+(9,'BIO','B.E',1,1,2018,1,89.00,1,'Jspider',1,6,1,'Universal',1,4),
+(10,'CI','B.E',1,1,2019,1,46.00,1,'Jspider',1,6,1,'Universal',1,3);
+
+
+
+
+6.Candidate_Education_Detailed_Check:
+--------------------------------------
+create table Candidate_Education_Detailed_Check(
+Id int not null auto_Increment,
+Candidate_Id int not null,
+Field_Name varchar(20),
+is_Verified boolean,
+Lastupd_Stamp date,
+Lastupd_User varchar(20),
+Creator_Stamp timestamp,
+Creator_User int,
+primary key(Id),
+FOREIGN KEY(Creator_User) REFERENCES User_Details(Id));
+
+
+Data:
+-------
+insert into Candidate_Education_Detailed_Check(Candidate_Id,
+Field_Name,
+is_Verified,
+Lastupd_Stamp,
+Lastupd_User,
+Creator_User int,
+
+7.Candidate_Documents:
+-----------------------
+create table Candidate_Documents(
+Id int not null auto_Increment,
+Candidate_Id int not null,
+Doc_Type varchar(20),
+Doc_Path_Status varchar(10),
+Creator_Stamp timestamp,
+creator_User int,
+primary key(Id),
+FOREIGN KEY(Creator_User) REFERENCES User_Details(Id));
+
+Data:
+-------
+insert into Candidate_Documents(Candidate_Id,Doc_Type,Doc_Path_Status,creator_User)values
+(1,'pdf','true',1),
+(2,'pdf','true',2),
+(3,'pdf','true',3),
+(4,'pdf','true',4),
+(5,'pdf','true',5),
+(6,'pdf','true',1),
+(7,'pdf','true',2),
+(8,'pdf','true',3),
+(9,'pdf','true',4),
+(10,'pdf','true',5);
+
+
+8.User_Roles:
+--------------
+create table User_Roles(
+User_Id int,
+Role_Name varchar(20),
+primary key(User_Id)
+);
+
+
+Data:
+------
+insert into User_Roles(User_Id,Role_Name)values
+(1,'Admin'),
+(2,'Mentor'),
+(3,'TechLeadHead'),
+(4,'TechLead'),
+(5,'Mentor');
+
+9.Company:
+-----------
+create table Company(
+Id int not null auto_Increment,
+Name varchar(30) not null,
+Address varchar(60) not null,
+Location varchar(10) not null,
+Status varchar(10),
+Creator_Stamp timestamp,
+creator_User int,
+primary key(Id),
+FOREIGN KEY(Creator_User) REFERENCES User_Details(Id));
+
+
+Data:
+-------
+insert into Company(Name,Address,Location,Status,creator_User)
+values
+('SoftSurva','UmayaTechPark','Banaglore','True',1),
+('UBQ','UmayaTechPark','Banaglore','True',2),
+('MTAP','UmayaTechPark','Banaglore','True',3),
+('TekSystem','UmayaTechPark','Banaglore','True',4),
+('MINDGame','UmayaTechPark','Banaglore','True',5),
+('SoftTech','UmayaTechPark','Banaglore','True',1),
+('OrchidSoft','UmayaTechPark','Banaglore','True',2),
+('AmitSoft','UmayaTechPark','Banaglore','True',3),
+('MindTree','UmayaTechPark','Banaglore','True',4),
+('Oracle','ManytaTechPark','Banaglore','True',5);
+
+
+
+10.Maker_Program:
+------------------
+create table Maker_Program(
+Id int not null auto_Increment,
+Program_Name varchar(20) not null,
+Program_Type varchar(20) not null,
+Program_link varchar(20),
+Tech_Stack_Id int,
+Tech_Type_Id int,
+is_Program_Approved boolean,
+Description varchar(40),
+Status varchar(10),
+Creator_Stamp timestamp,
+creator_User int,
+primary key(Id),
+FOREIGN KEY(Creator_User) REFERENCES User_Details(Id),
+FOREIGN KEY(Tech_Stack_Id) REFERENCES Tech_Stack(Id),
+FOREIGN KEY(Tech_Type_Id) REFERENCES Tech_Type(Id)
+);
+
+
+insert into Maker_Program(Program_Name,Program_Type,Program_link,Tech_Stack_Id,Tech_Type_Id,is_Program_Approved,Description,Status,creator_User)
+values
+('AddressBook','Java','geekforgeeks',1,1,1,'Json implementation',1,1),
+('InventoryManagement','Java','geekforgeeks',2,1,1,'Json implementation',1,2),
+('ClinicManagement','Java','geekforgeeks',3,1,1,'Json implementation',1,3),
+('Amstrong','C#','geekforgeeks',4,1,1,'',0,4),
+('SumOfTheNumber','PHP','geekforgeeks',3,1,1,'',1,5);
+
+11.Tech_Stack:
+---------------
+create table Tech_Stack(
+Id int not null auto_Increment,
+Tech_Name varchar(20) not null,
+Image_Path varchar(20),
+Framework_Cur_Status varchar(20),
+Creator_Stamp timestamp,
+creator_User int,
+Cur_Status varchar(20),
+primary key(Id),
+FOREIGN KEY(Creator_User) REFERENCES User_Details(Id));
+
+Data:
+------
+insert into Tech_Stack(Tech_Name,Image_Path,Framework_Cur_Status,creator_User,Cur_Status)
+values
+('Java','/Home/Img1.jpg','Java+Backend',1,'True'),
+('Java','/Home/Img2.jpg','Java+Angular',2,'True'),
+('Java','/Home/Img3.jpg','Java+React',3,'True'),
+('Java','/Home/Img4.jpg','Java+Backend',4,'True'),
+('Java','/Home/Img5.jpg','Java+Angular',5,'True'),
+('Java','/Home/Img6.jpg','Java+Angular',1,'True'),
+('Java','/Home/Img7.jpg','Java+Backend',2,'True'),
+('Java','/Home/Img8.jpg','Java+Backend',3,'True'),
+('Java','/Home/Img9.jpg','Java+React+Angular',4,'True'),
+('Java','/Home/Img10.jpg','Java+Backend',5,'False');
+
+12.App_Parameters:
+------------------
+create table App_Parameters(
+Id int not null auto_Increment,
+Key_Type varchar(10),
+Key_Value varchar(10),
+key_text varchar(30) not null,
+Cur_Status varchar(10),
+Lastupd_User varchar(10),
+Lastupd_Stamp date,
+Creator_Stamp timestamp,
+creator_User int,
+Seq_Num int,
+primary key(Id),
+FOREIGN KEY(Creator_User) REFERENCES User_Details(Id));
+
+13.Mentor:
+-----------
+create table Mentor(
+Id int not null auto_Increment,
+Name varchar(20) not null,
+Mentor_Type varchar(20) not null,
+Lab_Id int,
+Status boolean,
+Creator_Stamp timestamp,
+Creator_User int,
+primary key(Id),
+FOREIGN KEY(Creator_User) REFERENCES User_Details(Id),
+FOREIGN KEY(Lab_Id) REFERENCES Lab(Id));
+
+update Mentor set Status=1;
+alter table Mentor modify Status boolean;
+
+Data:
+------
+insert into Mentor(Name,Mentor_Type,Lab_Id,Status,Creator_User)
+values
+('Venkat',1,1,'True',1),
+('Varsha',2,2,'True',2),
+('Akashy',2,3,'True',3);
+
+
+14.lab:
+--------
+create table Lab(
+Id int not null auto_Increment,
+Name varchar(20) not null,
+Location varchar(20) not null,
+Address varchar(50) not null,
+Status boolean,
+Creator_Stamp timestamp,
+creator_User int,
+primary key(Id),
+FOREIGN KEY(Creator_User) REFERENCES User_Details(Id));
+
+update Lab set Status=1;
+alter table Lab modify Status boolean;
+
+Data:
+------
+insert into Lab(Name,Location,Address,Status,creator_User)
+values
+('BridgeLabz','Banaglore','HSR Layout Sector 4 Opposite To HSR BDA','True',1),
+('BridgeLabz','Pune','Malhotra Chambers First Floor Govandi East Mumbai','True',2),
+('BridgeLabz','Mumbai','Malhotra Chambers First Floor Govandi East Mumbai','True',3);
+
+
+15.Mentor_Ideation_Map:
+------------------------
+create table Mentor_Ideation_Map(
+Id int not null auto_Increment,
+Mentor_Id int not null,
+Status boolean,
+Creator_Stamp timestamp,
+Creator_User int,
+primary key(Id),
+FOREIGN KEY(Creator_User) REFERENCES User_Details(Id),
+FOREIGN KEY(Mentor_Id) REFERENCES Mentor(Id));
+
+update Mentor_Ideation_Map set Status=1;
+alter table Mentor_Ideation_Map modify Status boolean;
+
+Data:
+------
+insert into Mentor_Ideation_Map(Mentor_Id,Status,Creator_User)
+values
+(1,'True',1),
+(2,'True',2),
+(1,'True',3),
+(2,'True',4),
+(1,'True',5);
+
+
+16.Mentor_Tech_Stack:
+----------------------
+create table Mentor_Tech_Stack(
+Id int not null auto_Increment,
+Mentor_Id int not null,
+Tech_Stack_Id int not null,
+Status boolean,
+Creator_Stamp timestamp,
+Creator_User int,
+primary key(Id),
+FOREIGN KEY(Creator_User) REFERENCES User_Details(Id),
+FOREIGN KEY(Mentor_Id) REFERENCES Mentor(Id),
+FOREIGN KEY(Tech_Stack_Id) REFERENCES Tech_Stack(Id));
+
+Data:
+-------
+insert into Mentor_Tech_Stack(Mentor_Id,Tech_Stack_Id,Status,Creator_User)
+values
+(1,1,1,1),
+(2,5,1,2),
+(3,4,1,3),
+(1,3,1,4),
+(2,2,1,5),
+(3,3,1,1),
+(1,2,1,2),
+(2,1,1,3),
+(3,3,1,4),
+(3,2,1,5);
+
+
+17.Tech_Type:
+-------------
+create table Tech_Type(
+Id int not null auto_Increment,
+Tech_Name varchar(20) not null,
+Cur_Status boolean,
+Creator_Stamp timestamp,
+Creator_User int,
+primary key(Id),
+FOREIGN KEY(Creator_User) REFERENCES User_Details(Id)
+);
+
+insert into Tech_Type(Tech_Name,Cur_Status,Creator_User)
+values
+('Java',1,1),
+('React',1,2),
+('C#',1,3),
+('PHP',0,4),
+('Python',1,5),
+('Angular',1,1);
+
+18.Lab_Threshold:
+------------------
+create table Lab_Threshold(
+Id int not null auto_Increment,
+Lab_Id int not null,
+Lab_Capacity int not null,
+Lead_Threshold int,
+Ideation_Engg_Threshold int,
+Buddy_Engg_Threshold int,
+Status boolean,
+Creator_Stamp timestamp,
+Creator_User int,
+primary key(Id),
+FOREIGN KEY(Creator_User) REFERENCES User_Details(Id),
+FOREIGN KEY(Lab_Id) REFERENCES Lab(Id)
+);
+
+
+insert into Lab_Threshold(Lab_Id,Lab_Capacity,Lead_Threshold,Ideation_Engg_Threshold,Buddy_Engg_Threshold,Status,Creator_User)
+values 
+(1,100,5,4,15,1,1),
+(2,100,5,3,25,1,2),
+(3,100,5,5,20,1,3);
+
+
+
+19.Company_Requirement:
+------------------------
+create table Company_Requirement(
+Id int not null auto_Increment,
+Company_Id int not null,
+Requested_Month varchar(10),
+City varchar(10) not null,
+is_Doc_Verification boolean,
+Requirement_Doc_Path varchar(20),
+no_Of_Engg int,
+Tech_Stack_Id int not null,
+Tech_Type_Id int not null,
+Marker_Program_Id int not null,
+Lead_Id int not null,
+Ideation_Engg_Id int not null,
+Buddy_Engg_Id int,
+Special_Remark varchar(30),
+Status boolean,
+Creator_Stamp timestamp,
+Creator_User int,
+primary key(Id),
+FOREIGN KEY(Creator_User) REFERENCES User_Details(Id),
+FOREIGN KEY(Company_Id) REFERENCES Company(Id),
+FOREIGN KEY(Tech_Stack_Id) REFERENCES Tech_Stack(Id),
+FOREIGN KEY(Tech_Type_Id) REFERENCES Tech_Type(Id),
+FOREIGN KEY(Marker_Program_Id) REFERENCES Maker_Program(Id)
+);
+
+insert into Company_Requirement(Company_Id,Requested_Month,City,is_Doc_Verification,Requirement_Doc_Path,no_Of_Engg,Tech_Stack_Id,Tech_Type_Id,Marker_Program_Id,
+Lead_Id,Ideation_Engg_Id,Buddy_Engg_Id,Special_Remark,Status,Creator_User)
+values
+(1,'March','Bangalore',1,'//Home//img1.jpg',2,1,1,1,1,1,1,'Good',1,1);
+
+
+20.Candidate_Tech_Stack_Assignment:
+------------------------------------
+create table Candidate_Tech_Stack_Assignment(
+Id int not null auto_Increment,
+Requirement_Id int not null,
+Candidate_Id int not null,
+Assign_Date date,
+Status boolean,
+Creator_Stamp timestamp,
+Creator_User int,
+primary key(Id),
+FOREIGN KEY(Creator_User) REFERENCES User_Details(Id),
+FOREIGN KEY(Candidate_Id) REFERENCES Fellowship_Candidate(Id)
+);
+
+insert into Candidate_Tech_Stack_Assignment(Requirement_Id,Candidate_Id,Assign_Date,Status,Creator_User)
+values
+(1,1,'2018-2-22',1,1),
+(2,2,'2018-3-22',1,2),
+(3,3,'2018-4-22',1,5),
+(4,4,'2018-5-22',1,1),
+(5,5,'2018-6-22',1,2),
+(6,6,'2018-7-22',1,3),
+(7,7,'2018-8-22',1,4),
+(8,8,'2018-9-22',1,5);
+
+
+MYSQL INSTALLATION STEPS:
+1)sudo apt-get update
+2)sudo apt-get install mysql-server
+3)sudo ufw allow mysql
+4)systemctl start mysql
+5)systemctl enable mysql
+//ENTER 5 TIMES SYSTEM PASSWORD
+6)/usr/bin/mysql -u root -p
+//TO LOGIN INTO MYSQL ROOT USER DEFAULT PASSWORD: password.
+7)	UPDATE mysql.user SET authentication_string = PASSWORD('root') WHERE User = 'root';
+	or
+	UPDATE mysql.user SET Password = PASSWORD('root') WHERE User = 'root';
+8)FLUSH PRIVILEGES;
+
+
+MYSQL UNINSTALL STEPS:
+1)sudo apt-get remove --purge mysql*
+2)sudo apt-get purge mysql*
+3)sudo apt-get autoremove
+4)sudo apt-get autoclean
+5)sudo apt-get remove dbconfig-mysql
+6)sudo apt-get dist-upgrade
+7)sudo apt-get install mysql-server
+
+
+update user set authentication_string=PASSWORD(root);
+
+
+
+
